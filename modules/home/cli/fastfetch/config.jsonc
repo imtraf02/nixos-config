@@ -1,0 +1,75 @@
+{
+	"$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+	"logo": null,
+	"display": {
+		"separator": "  ",
+		"color": "white",
+		"constants": [
+			"\u001b[0m",
+			"\u001b[38;5;212m",
+			"\u001b[38;5;141m",
+			"\u001b[38;5;117m",
+			"\u001b[38;5;47m",
+			"\u001b[38;5;215m",
+			"\u001b[38;5;203m",
+			"\u001b[38;5;228m",
+			"\u001b[38;5;219m"
+		]
+	},
+	"modules": [
+		"break",
+		{
+			"type": "custom",
+			"key": "{$3}╭─────────────────────────────────────────────╮{$1}"
+		},
+		{
+			"type": "os",
+			"key": "{$3}│{$2} 󰻀  OS      {$1}",
+			"format": "{$2}{pretty-name>30}{$3} │{$1}"
+		},
+		{
+			"type": "kernel",
+			"key": "{$3}│{$4}   Kernel  {$1}",
+			"format": "{$4}{release>30}{$3} │{$1}"
+		},
+		{
+			"type": "command",
+			"key": "{$3}│{$5}   Uptime  {$1}",
+			"text": "uptime -p | cut -d ' ' -f 2-",
+			"format": "{$5}{>30}{$3} │{$1}"
+		},
+		{
+			"type": "command",
+			"key": "{$3}│{$6}   User    {$1}",
+			"text": "echo $USER",
+			"format": "{$6}{>30}{$3} │{$1}"
+		},
+		{
+			"type": "command",
+			"key": "{$3}│{$7}   Host    {$1}",
+			"text": "hostnamectl hostname",
+			"format": "{$7}{>30}{$3} │{$1}"
+		},
+		{
+			"type": "shell",
+			"key": "{$3}│{$8}   Shell   {$1}",
+			"format": "{$8}{pretty-name>30}{$3} │{$1}"
+		},
+		{
+			"type": "command",
+			"key": "{$3}│{$9}   Memory  {$1}",
+			"text": "free -m | awk 'NR==2{printf \"%.2f/%.2f GiB\",$3/1024,$2/1024}'",
+			"format": "{$9}{>30}{$3} │{$1}"
+		},
+		{
+			"type": "packages",
+			"key": "{$3}│{$2}   Packages{$1}",
+			"format": "{$2}{all>30}{$3} │{$1}"
+		},
+		{
+			"type": "custom",
+			"key": "{$3}╰─────────────────────────────────────────────╯{$1}"
+		},
+		"break"
+	]
+}
